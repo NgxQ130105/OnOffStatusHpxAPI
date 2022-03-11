@@ -10,5 +10,5 @@ Usage:
 
 How to use:
 - Do /api new in Hypixel server to get the new API, replace the old with the new one
-- Inputing your username instead mine (z3r0o2)
-- Click the "run" button to execute the code. It will ONLY notify you if you are disconnected through the Terminal or else it will show nothing!
+- Input your username instead mine (z3r0o2)
+- Click the "run" button to execute the code. It will ONLY notify you if you are disconnected in the server through the Terminal or else it will show nothing!
