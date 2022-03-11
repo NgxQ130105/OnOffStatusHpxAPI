@@ -1,15 +1,24 @@
 import requests
-import json
-from pprint import pprint
+from mojang import MojangAPI
 
-#reuqest info
-def get_info(call):
-    r = requests.get(call)
-    return r.json()
+loginCondition = True
+while loginCondition == True:
+    api_key = "00297e7c-8c63-4e7c-8ce3-aa8a419e3fd0"
 
-#Get API_KEY
-API_FILE = open("API.json", "r")
-API_KEY = json.loads(API_FILE.read())["API-KEY"]
+    userinput = "z3r0o2"
+    uuid = MojangAPI.get_uuid(userinput)
+    requestlink = f"https://api.hypixel.net/player?key={api_key}&uuid={uuid}"
 
-UUID = ""
-player_url = "https://api.hypixel.net/skyblock"
+    hydata = requests.get(requestlink).json()
+
+    player = hydata["player"]["displayname"]
+
+    logoutime = hydata['player']['lastLogout']
+    logintime = hydata['player']['lastLogin']
+
+    while loginCondition == True:
+        if logoutime < logintime:
+            loginCondition = True
+        else:
+            loginCondition = False
+            print(f"{player} is no longer online")
