@@ -17,11 +17,7 @@ import lightbulb
 
 # @bot.command
 # @lightbulb.command('ping', 'Says pong!')
-<<<<<<< Updated upstream
 # @lightbulb.implements(lightbulb.SlashCommand)
-=======
-# @lightbulb.implements(lightbulb.SlashCommand)``
->>>>>>> Stashed changes
 # async def ping(ctx):
 #     await ctx.respond('Pong')
 # bot.run()
