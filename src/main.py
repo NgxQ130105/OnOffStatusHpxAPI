@@ -1,15 +1,17 @@
 #Import libs
-import requests
+import asyncio
+import aiohttp #Replacing request module with aiohttp
 from mojang import MojangAPI
-import time
+import asyncio #Replacing time module with asyncio
 import hikari
 import lightbulb
 
 
 bot = lightbulb.BotApp(
-    token="",
+    token="OTUyNDYzOTM1NjIwMTI0NzEy.Yi2ZKg.fSuIQpP686lyGiirygTNjj70U-I",
     default_enabled_guilds=(952060009863344148)
 )
+
 
 @bot.listen(hikari.StartedEvent)
 async def on_started(event):
@@ -26,14 +28,14 @@ async def ping(ctx):
     #Getting the Hpx ID
     uuid = MojangAPI.get_uuid(userinput)
     requestName = f"https://api.hypixel.net/player?key={api_key}&uuid={uuid}"
-    hydata = requests.get(requestName).json()
+    hydata = aiohttp.get(requestName).json()
     playerName = hydata["player"]["displayname"]
 
     while True:
         Outofthegame = False
         requestStatus = f"https://api.hypixel.net/status?key={api_key}&uuid={uuid}"
 
-        hydata = requests.get(requestStatus).json()
+        hydata = aiohttp.get(requestStatus).json()
         onHypixel = hydata["session"]["online"]
         # onSkyblock = hydata["session"]["gameType"]
 
@@ -46,7 +48,7 @@ async def ping(ctx):
             print("The player has been disconnected from Hypixel")
             Outofthegame = True
             break
-        time.sleep(60)
+        asyncio.sleep(60)
     
     if Outofthegame == True:
         await ctx.respond(f'{playerName} is no longer playing Hypixel Skyblock or no longer online')
