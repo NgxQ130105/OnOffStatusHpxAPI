@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\quang\Documents\hpx_API\env"
+VIRTUAL_ENV="C:\Users\quang\OneDrive\Documents\OnOffStatusHpxAPI\env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
