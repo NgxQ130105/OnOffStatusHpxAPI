@@ -44,30 +44,27 @@ async def ping(ctx):
         
 
     playerName = data1["player"]["displayname"]
-    async def main():
-        while True:
-            #Website API (Json Parametters)
-            async with aiohttp.ClientSession() as session:
-                async with session.get(statusURL) as response:
-                    data = await response.json() #request Data API from api.hypixel.net
-                    onHypixel = data["session"]["online"] #get online from session from json Dict
-                    
-                    
 
-            if onHypixel == True:
-                onSkyblock = data["session"]["gameType"] #get gameType from session from json Dict
-                onWhichIs = data["session"]["mode"] #get mode from session from json Dict
-                if onSkyblock != "SKYBLOCK" and onWhichIs != "dynamic":
-                    await ctx.respond(f'{playerName} is no longer playing Hypixel Skyblock or no longer online')
-                    break
-            if onHypixel == False:
+    while True:
+        #Website API (Json Parametters)
+        async with aiohttp.ClientSession() as session:
+            async with session.get(statusURL) as response:
+                data = await response.json() #request Data API from api.hypixel.net
+                onHypixel = data["session"]["online"] #get online from session from json Dict
+                
+                
+
+        if onHypixel == True:
+            onSkyblock = data["session"]["gameType"] #get gameType from session from json Dict
+            onWhichIs = data["session"]["mode"] #get mode from session from json Dict
+            if onSkyblock != "SKYBLOCK" and onWhichIs != "dynamic":
                 await ctx.respond(f'{playerName} is no longer playing Hypixel Skyblock or no longer online')
                 break
-            asyncio.sleep(60)
+        if onHypixel == False:
+            await ctx.respond(f'{playerName} is no longer playing Hypixel Skyblock or no longer online')
+            break
+        asyncio.sleep(60)
 
-loop = asyncio.get_event_loop()
-loop.run_until_complete(main())
-        
-bot.run()
-
+if __name__ == "__main__":
+    bot.run()
 

@@ -4,8 +4,8 @@ import aiohttp
 import asyncio
 
 
-# uuid = "8404f895-d977-4336-8ca8-13687d6badca"
-# api_key = "00297e7c-8c63-4e7c-8ce3-aa8a419e3fd0"
+uuid = "8404f895-d977-4336-8ca8-13687d6badca"
+api_key = "00297e7c-8c63-4e7c-8ce3-aa8a419e3fd0"
 
 
 async def main():
