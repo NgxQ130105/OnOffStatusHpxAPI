@@ -1,22 +1,22 @@
 
 # #FOR TESTING PURPOSE(AIOHTTP + ASYNCIO)
-# import aiohttp
-# import asyncio
+import aiohttp
+import asyncio
 
 
 # uuid = "8404f895-d977-4336-8ca8-13687d6badca"
 # api_key = "00297e7c-8c63-4e7c-8ce3-aa8a419e3fd0"
 
 
-# async def main():
-#     async with aiohttp.ClientSession() as session:
-#         async with session.get(f"https://api.hypixel.net/status?key={api_key}&uuid={uuid}") as response:
-#             data = await response.json()
-#             onHypixel = data["session"]["online"]
-#             print(onHypixel)
+async def main():
+    async with aiohttp.ClientSession() as session:
+        async with session.get(f"https://api.hypixel.net/status?key={api_key}&uuid={uuid}") as response:
+            data = await response.json()
+            onHypixel = data["session"]["online"]
+            print(onHypixel)
 
-# loop = asyncio.get_event_loop()
-# loop.run_until_complete(main())
+loop = asyncio.get_event_loop()
+loop.run_until_complete(main())
  
 # #FOR TESTING PURPOSE (Old request Library Example)
 # onHypixel = hydata["session"]["online"]
